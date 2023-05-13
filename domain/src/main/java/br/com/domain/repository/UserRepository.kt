@@ -1,0 +1,14 @@
+package br.com.domain.repository
+
+import br.com.domain.model.User
+import br.com.domain.model.UserRepo
+import kotlinx.coroutines.flow.Flow
+
+interface UserRepository {
+
+    suspend fun getUsers(): Flow<List<User>>
+
+    suspend fun getUser(userLogin: String): Flow<User>
+
+    suspend fun getUserRepos(userLogin: String): Flow<List<UserRepo>>
+}
