@@ -1,13 +1,13 @@
 package br.com.datalayer.mapper
 
 import br.com.datalayer.model.RepoResponse
-import br.com.domain.model.UserRepo
+import br.com.domain.model.Repo
 import br.com.domain.util.Mapper
 
-class RepoResponseMapper : Mapper<RepoResponse, UserRepo?> {
+class RepoResponseMapper : Mapper<RepoResponse, Repo?> {
 
-    override fun map(source: RepoResponse): UserRepo {
-        return UserRepo(
+    override fun map(source: RepoResponse): Repo {
+        return Repo(
             id = source.id,
             name = source.name.orEmpty(),
             fullName = source.fullName.orEmpty(),

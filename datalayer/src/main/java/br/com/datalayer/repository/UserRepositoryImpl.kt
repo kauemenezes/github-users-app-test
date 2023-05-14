@@ -7,6 +7,7 @@ import br.com.domain.repository.UserRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.zip
 
 class UserRepositoryImpl(
     private val userDataSource: UserDataSource,
@@ -18,13 +19,19 @@ class UserRepositoryImpl(
             .flowOn(dispatcher)
     }
 
-    override suspend fun getUser(userLogin: String): Flow<User> {
+    override suspend fun getUserDetails(userLogin: String): Flow<UserRepo> {
         return userDataSource.getUser(userLogin)
+            .zip(userDataSource.getUserRepos(userLogin)) { userDetails, userRepos ->
+                return@zip UserRepo(
+                    user = userDetails,
+                    userRepos = userRepos
+                )
+            }
             .flowOn(dispatcher)
     }
 
-    override suspend fun getUserRepos(userLogin: String): Flow<List<UserRepo>> {
-        return userDataSource.getUserRepos(userLogin)
-            .flowOn(dispatcher)
-    }
+//    override suspend fun getUserRepos(userLogin: String): Flow<List<UserRepo>> {
+//        return userDataSource.getUserRepos(userLogin)
+//            .flowOn(dispatcher)
+//    }
 }

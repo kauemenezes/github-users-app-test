@@ -8,7 +8,5 @@ interface UserRepository {
 
     suspend fun getUsers(): Flow<List<User>>
 
-    suspend fun getUser(userLogin: String): Flow<User>
-
-    suspend fun getUserRepos(userLogin: String): Flow<List<UserRepo>>
+    suspend fun getUserDetails(userLogin: String): Flow<UserRepo>
 }

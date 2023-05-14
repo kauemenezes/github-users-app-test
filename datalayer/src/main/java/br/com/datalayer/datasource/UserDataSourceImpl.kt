@@ -3,8 +3,8 @@ package br.com.datalayer.datasource
 import br.com.datalayer.api.UserService
 import br.com.datalayer.mapper.RepoResponseMapper
 import br.com.datalayer.mapper.UserResponseMapper
+import br.com.domain.model.Repo
 import br.com.domain.model.User
-import br.com.domain.model.UserRepo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -25,7 +25,7 @@ class UserDataSourceImpl(
         emit(userResponseMapper.map(userService.getUser(userLogin)))
     }
 
-    override suspend fun getUserRepos(userLogin: String): Flow<List<UserRepo>> = flow {
+    override suspend fun getUserRepos(userLogin: String): Flow<List<Repo>> = flow {
         emit(userService.getUserRepos(userLogin).map {
             repoResponseMapper.map(it)
         })
