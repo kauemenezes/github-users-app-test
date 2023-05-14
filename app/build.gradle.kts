@@ -23,11 +23,11 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("String", "BASE_URL", "\"http://200.129.18.18\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.github.com\"")
         }
         debug {
             applicationIdSuffix = ".dev"
-            buildConfigField("String", "BASE_URL", "\"http://200.129.18.18\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.github.com\"")
         }
     }
 
@@ -83,6 +83,10 @@ dependencies {
     // -- Koin
     implementation(Dependencies.KOIN)
     implementation(Dependencies.KOIN_NAVIGATION)
+
+    //Glide
+    implementation(Dependencies.GLIDE)
+    kapt(Dependencies.GLIDE_COMPILER)
 
     // Test
     testImplementation(Dependencies.JUNIT)

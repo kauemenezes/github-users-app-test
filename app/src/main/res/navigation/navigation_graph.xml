@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/users">
+
+    <fragment
+        android:id="@+id/users"
+        android:name="br.com.githubusers.ui.users.UsersFragment"
+        android:label="@string/users_screen_title"
+        tools:layout="@layout/fragment_users">
+
+    </fragment>
+
+</navigation>

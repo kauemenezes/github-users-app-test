@@ -31,16 +31,18 @@ val networkModule = module {
 fun provideRetrofitClient() =
     retrofitClient(okHttpClient())
 
-private fun okHttpClient() =
-    OkHttpClient.Builder().run {
-        addInterceptor(HttpLoggingInterceptor().apply {
-            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-            readTimeout(60L, TimeUnit.SECONDS)
-            connectTimeout(60L, TimeUnit.SECONDS)
-            writeTimeout(60L, TimeUnit.SECONDS)
-        })
-        build()
+private fun okHttpClient(): OkHttpClient {
+    val client = OkHttpClient.Builder()
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS)
+    if (BuildConfig.DEBUG) {
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+        client.addInterceptor(logging)
     }
+    return client.build()
+}
 
 private fun retrofitClient(httpClient: OkHttpClient): Retrofit =
     Retrofit.Builder().run {

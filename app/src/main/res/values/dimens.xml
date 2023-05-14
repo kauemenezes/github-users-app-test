@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Font Size -->
+    <dimen name="font_size_quark">12sp</dimen>
+    <dimen name="font_size_nano">14sp</dimen>
+    <dimen name="font_size_extra_small">16sp</dimen>
+    <dimen name="font_size_small">20sp</dimen>
+    <dimen name="font_size_medium">24sp</dimen>
+    <dimen name="font_size_large">32sp</dimen>
+    <dimen name="font_size_extra_large">40sp</dimen>
+    <dimen name="font_size_big">48sp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="spacing_none">0dp</dimen>
+    <dimen name="spacing_quark">4dp</dimen>
+    <dimen name="spacing_nano">8dp</dimen>
+    <dimen name="spacing_extra_small">16dp</dimen>
+    <dimen name="spacing_small">24dp</dimen>
+    <dimen name="spacing_medium">32dp</dimen>
+    <dimen name="spacing_large">40dp</dimen>
+    <dimen name="spacing_extra_large">48dp</dimen>
+
+    <!-- Card view -->
+    <dimen name="card_elevation">10dp</dimen>
+    <dimen name="card_radius">2dp</dimen>
+
+    <!-- Users screen -->
+    <dimen name="user_item_image_width">60dp</dimen>
+    <dimen name="user_item_image_height">80dp</dimen>
+    <dimen name="user_input_search_radius">16dp</dimen>
+
+</resources>
