@@ -11,6 +11,24 @@
         android:label="@string/users_screen_title"
         tools:layout="@layout/fragment_users">
 
+        <action
+            android:id="@+id/action_usersFragment_to_userDetailsFragment"
+            app:destination="@+id/movie_details"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/movie_details"
+        android:name="br.com.githubusers.ui.userdetails.UserDetailsFragment"
+        android:label="@string/users_details_screen_title"
+        tools:layout="@layout/fragment_user_details">
+
+        <argument
+            android:name="userLogin"
+            app:argType="string" />
     </fragment>
 
 </navigation>

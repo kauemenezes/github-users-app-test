@@ -6,6 +6,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import br.com.githubusers.util.RequestState
 import br.com.domain.model.User
 import br.com.githubusers.databinding.FragmentUsersBinding
@@ -101,6 +102,8 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>() {
     }
 
     private fun callUserDetails(userLogin: String) {
+        val action = UsersFragmentDirections.actionUsersFragmentToUserDetailsFragment(userLogin)
+        findNavController().navigate(action)
     }
 
     private fun displayLoadingState() {
