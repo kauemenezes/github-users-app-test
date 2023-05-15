@@ -28,7 +28,7 @@ val networkModule = module {
     }
 }
 
-fun provideRetrofitClient() =
+private fun provideRetrofitClient() =
     retrofitClient(okHttpClient())
 
 private fun okHttpClient(): OkHttpClient {
@@ -52,4 +52,4 @@ private fun retrofitClient(httpClient: OkHttpClient): Retrofit =
         build()
     }
 
-fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
+private fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO

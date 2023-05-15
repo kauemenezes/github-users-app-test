@@ -90,6 +90,15 @@ dependencies {
 
     // Test
     testImplementation(Dependencies.JUNIT)
+    testImplementation(Dependencies.ROBOLECTRIC)
+    testImplementation(Dependencies.ANDROIDX_TEST_CORE)
+    testImplementation(Dependencies.ANDROIDX_TEST_RUNNER)
+    testImplementation(Dependencies.ANDROIDX_JUNIT)
+    testImplementation(Dependencies.ARCH_COMPONENT)
+    testImplementation(Dependencies.COROUTINES_TEST)
+    testImplementation(Dependencies.MOCKK)
+    testImplementation(Dependencies.MOCK_WEB_SERVER)
+    testImplementation(Dependencies.TURBINE)
 
     androidTestImplementation(Dependencies.ANDROIDX_JUNIT_KTX)
     androidTestImplementation(Dependencies.ESPRESSO)

@@ -29,9 +29,4 @@ class UserRepositoryImpl(
             }
             .flowOn(dispatcher)
     }
-
-//    override suspend fun getUserRepos(userLogin: String): Flow<List<UserRepo>> {
-//        return userDataSource.getUserRepos(userLogin)
-//            .flowOn(dispatcher)
-//    }
 }
