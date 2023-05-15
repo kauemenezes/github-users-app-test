@@ -23,10 +23,12 @@ class UsersListAdapter(private val onClick: (String) -> Unit) : ListAdapter<User
     }
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
-        holder.binding.userImage.image(currentList[position].avatarUrl)
-        holder.binding.userLogin.text = currentList[position].login
-        holder.binding.userContainer.setOnClickListener {
-            onClick(currentList[position].login)
+        currentList[position].apply {
+            holder.binding.userImage.image(avatarUrl)
+            holder.binding.userLogin.text = login
+            holder.binding.userContainer.setOnClickListener {
+                onClick(login)
+            }
         }
     }
 }

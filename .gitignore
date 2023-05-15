@@ -1,4 +1,3 @@
-buildSrc
 /.idea
 *.iml
 .gradle

@@ -63,7 +63,6 @@ dependencies {
     // -- Lifecycle Components (ViewModel, LiveData and ReactiveStreams)
     implementation(Dependencies.LIFECYCLE_RUNTIME)
     implementation(Dependencies.VIEWMODEL_KTX)
-    implementation(Dependencies.LIVEDATA_KTX)
     implementation(Dependencies.LIFECYCLE_COMMOM_JAVA8)
 
     // -- Retrofit2

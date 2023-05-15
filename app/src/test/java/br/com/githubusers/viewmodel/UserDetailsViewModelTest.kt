@@ -5,7 +5,7 @@ import app.cash.turbine.test
 import br.com.domain.usecase.GetUserDetailsUseCase
 import br.com.githubusers.sample.userRepos
 import br.com.githubusers.ui.userdetails.UserDetailsViewModel
-import br.com.githubusers.util.RequestState
+import br.com.githubusers.util.UiState
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -31,7 +31,7 @@ class UserDetailsViewModelTest {
                 UserDetailsViewModel(mockkGetUserDetailsUseCase, UnconfinedTestDispatcher())
             viewModel.getUserDetails("test1")
             viewModel.userDetails.test {
-                Assert.assertEquals(RequestState.Success(userRepos), awaitItem())
+                Assert.assertEquals(UiState.Success(userRepos), awaitItem())
                 cancelAndIgnoreRemainingEvents()
             }
             coVerify { mockkGetUserDetailsUseCase("test1") }

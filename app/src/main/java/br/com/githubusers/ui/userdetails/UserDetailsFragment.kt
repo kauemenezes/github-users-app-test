@@ -13,7 +13,7 @@ import br.com.domain.model.UserRepo
 import br.com.githubusers.databinding.FragmentUserDetailsBinding
 import br.com.githubusers.ui.base.BaseFragment
 import br.com.githubusers.ui.extension.image
-import br.com.githubusers.util.RequestState
+import br.com.githubusers.util.UiState
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,14 +38,14 @@ class UserDetailsFragment : BaseFragment<FragmentUserDetailsBinding>() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 userDetailsViewModel.userDetails.collect {
                     when (it) {
-                        is RequestState.Loading -> {
+                        is UiState.Loading -> {
                             displayLoadingState()
                         }
-                        is RequestState.Success -> {
+                        is UiState.Success -> {
                             hideLoadingState()
                             fillData(it.data)
                         }
-                        is RequestState.Error -> {
+                        is UiState.Error -> {
                             hideLoadingState()
                             showMessage(getString(it.message)) {
                                 userDetailsViewModel.getUserDetails(args.userLogin)

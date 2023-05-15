@@ -5,7 +5,7 @@ import app.cash.turbine.test
 import br.com.domain.usecase.GetUsersUseCase
 import br.com.githubusers.sample.users
 import br.com.githubusers.ui.users.UsersViewModel
-import br.com.githubusers.util.RequestState
+import br.com.githubusers.util.UiState
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -30,7 +30,7 @@ class UsersViewModelTest {
             val viewModel =
                 UsersViewModel(mockkGetUsersUseCase, UnconfinedTestDispatcher())
             viewModel.users.test {
-                Assert.assertEquals(RequestState.Success(users), awaitItem())
+                Assert.assertEquals(UiState.Success(users), awaitItem())
                 cancelAndIgnoreRemainingEvents()
             }
             coVerify { mockkGetUsersUseCase() }

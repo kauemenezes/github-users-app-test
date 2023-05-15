@@ -14,7 +14,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_extra_small">
+        android:paddingHorizontal="@dimen/spacing_extra_small"
+        android:paddingVertical="@dimen/spacing_quark">
 
         <ImageView
             android:id="@+id/user_image"

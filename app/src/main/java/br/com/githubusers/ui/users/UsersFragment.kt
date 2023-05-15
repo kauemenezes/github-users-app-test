@@ -7,7 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import br.com.githubusers.util.RequestState
+import br.com.githubusers.util.UiState
 import br.com.domain.model.User
 import br.com.githubusers.databinding.FragmentUsersBinding
 import br.com.githubusers.ui.base.BaseFragment
@@ -42,10 +42,10 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 usersViewModel.users.collect {
                     when (it) {
-                        is RequestState.Loading -> {
+                        is UiState.Loading -> {
                             displayLoadingState()
                         }
-                        is RequestState.Success -> {
+                        is UiState.Success -> {
                             hideLoadingState()
                             githubUsers.apply {
                                 clear()
@@ -53,7 +53,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>() {
                             }
                             usersListAdapter.submitList(githubUsers)
                         }
-                        is RequestState.Error -> {
+                        is UiState.Error -> {
                             hideLoadingState()
                             showMessage(getString(it.message)) {
                                 usersViewModel.getUsers()

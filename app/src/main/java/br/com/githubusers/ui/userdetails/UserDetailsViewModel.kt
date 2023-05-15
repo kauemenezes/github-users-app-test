@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.domain.model.UserRepo
 import br.com.domain.usecase.GetUserDetailsUseCase
 import br.com.githubusers.util.ExceptionParser
-import br.com.githubusers.util.RequestState
+import br.com.githubusers.util.UiState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,18 +17,18 @@ class UserDetailsViewModel(
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val _userDetails = MutableStateFlow<RequestState<UserRepo>>(RequestState.Loading)
+    private val _userDetails = MutableStateFlow<UiState<UserRepo>>(UiState.Loading)
     val userDetails = _userDetails.asStateFlow()
 
     fun getUserDetails(userLogin: String) {
         viewModelScope.launch(dispatcher) {
-            _userDetails.value = RequestState.Loading
+            _userDetails.value = UiState.Loading
             getUserDetailsUseCase(userLogin)
                 .catch { e ->
-                    _userDetails.value = RequestState.Error(ExceptionParser.getMessage(e))
+                    _userDetails.value = UiState.Error(ExceptionParser.getMessage(e))
                 }
                 .collect {
-                    _userDetails.value = RequestState.Success(it)
+                    _userDetails.value = UiState.Success(it)
                 }
         }
     }

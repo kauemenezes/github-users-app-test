@@ -2,7 +2,7 @@ package br.com.githubusers.ui.users
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.githubusers.util.RequestState
+import br.com.githubusers.util.UiState
 import br.com.domain.model.User
 import br.com.domain.usecase.GetUsersUseCase
 import br.com.githubusers.util.ExceptionParser
@@ -17,7 +17,7 @@ class UsersViewModel(
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val _users = MutableStateFlow<RequestState<List<User>>>(RequestState.Loading)
+    private val _users = MutableStateFlow<UiState<List<User>>>(UiState.Loading)
     val users = _users.asStateFlow()
 
     init {
@@ -26,13 +26,13 @@ class UsersViewModel(
 
     fun getUsers() {
         viewModelScope.launch(dispatcher) {
-            _users.value = RequestState.Loading
+            _users.value = UiState.Loading
             getUsersUseCase()
                 .catch { e ->
-                    _users.value = RequestState.Error(ExceptionParser.getMessage(e))
+                    _users.value = UiState.Error(ExceptionParser.getMessage(e))
                 }
                 .collect {
-                    _users.value = RequestState.Success(it)
+                    _users.value = UiState.Success(it)
                 }
         }
     }
